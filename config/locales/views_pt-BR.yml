@@ -1,0 +1,9 @@
+pt-BR:
+  views:
+    contacts:
+      search_placeholder: 'Pesquisar por Nome, email e/ou telefone'
+      export_to_pdf: "Exportar Contatos para PDF"
+      export_to_xls: "Exportar Contatos para XLS"
+      export_pdf:
+        info_data: "Lista de Contatos gerada em %{date}"
+        exported: "Total de contatos exportados: %{total_exported}"

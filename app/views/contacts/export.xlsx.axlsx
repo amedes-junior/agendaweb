@@ -1,0 +1,20 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Buttons") do |sheet|
+  sheet.add_row [
+    t("activerecord.attributes.contact.name"),
+    t("activerecord.attributes.contact.birthdate"),
+    t("activerecord.attributes.contact.address"),
+    t("activerecord.attributes.contact.email"),
+    t("activerecord.attributes.contact.cellphone")
+  ]
+
+  @contacts.each do |contact|
+    sheet.add_row [
+      contact.name,
+      I18n.l(contact.birthdate),
+      contact.address,
+      contact.email,
+      contact.cellphone
+    ]
+  end
+end

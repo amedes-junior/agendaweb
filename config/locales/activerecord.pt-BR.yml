@@ -1,0 +1,30 @@
+pt-BR:
+  enums:
+    user:
+      role_id:
+        admin: "Administrador"
+        user: "Usuário"
+        dumb: "Bocó"
+      contacts:
+        gender:
+          male: "Masculino"
+          female: "Feminino"
+  activerecord:
+    models:
+      contact: "Contato"
+      user: "Usuário"
+    attributes:
+      contact:
+        name: "Nome"
+        birthdate: "Data de Nasc."
+        address: "Endereço"
+        email: "Email de Contato"
+        cellphone: "Telefone para Contato"
+        user_id: "Criado por"
+        avatar: "Foto do Contato"
+        gender: "Sexo"
+      user:
+        name: "Nome"
+        email: "Email"
+        password: "Senha"
+        role_id: "Perfil"

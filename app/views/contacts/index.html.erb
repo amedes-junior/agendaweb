@@ -1,0 +1,102 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1><%= t("activerecord.models.contact") %></h1>
+
+<%= search_form_for @q do |f| %>
+  <div class="row">
+
+    <div class="col-md-10">
+      <%= f.search_field :name_cont, class: "form-control", placeholder: t('views.contacts.search_placeholder') %>
+    </div>
+
+
+     <br/>
+
+    <div class="col-md-10">
+      <%= f.search_field :email_or_cellphone_or_user_name_cont, class: "form-control", placeholder: t('views.contacts.search_placeholder') %>
+    </div>
+
+
+
+    <div class="col-md-2">
+      <%= button_tag type: "submit", class: "btn btn-success" do %>
+        <%= fa_icon("search") %>
+      <% end %>
+      <%= link_to contacts_path, class: "btn btn-danger" do %>
+        <%= fa_icon("close") %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<br/>
+
+<div class="row m-t-20">
+  <div class="col-md-6">
+    <%=link_to t("views.contacts.export_to_pdf"), export_contacts_path(format: :pdf), class: 'btn btn-success', target: :_blank %>
+  </div>
+
+
+  <div>
+       <%= link_to export_contacts_path(format: :xlsx), class: 'btn btn-sucess', target: :_black do %>
+          <%= fa_icon('file-excel-o') %>
+          <%= t("views.contacts.export_to_xls") %>
+      <% end %>
+
+  </div>
+</div>
+
+
+<br/>
+
+
+
+<%= link_to t("app.new", name: t("activerecord.models.contact")), new_contact_path, class: "btn btn-success" %>
+
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= sort_link @q, :name, t("activerecord.attributes.contact.name") %></th>
+      <th><%= sort_link @q, :birthdate, t("activerecord.attributes.contact.birthdate") %></th>
+      <th><%= t("activerecord.attributes.contact.address") %></th>
+      <th><%= t("activerecord.attributes.contact.email") %></th>
+      <th><%= t("activerecord.attributes.contact.cellphone") %></th>
+      <th><%= t("activerecord.attributes.contact.user_id") %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+
+        <td>
+        <% unless contact.avatar.url.blank? %>
+          <%=image_tag contact.avatar.url, class:  "image-index" %>
+        <% end %>
+      </td>
+
+
+        <td><%= contact.name %></td>
+        <td><%= contact.birthdate %></td>
+        <td><%= contact.address %></td>
+        <td><%= contact.email %></td>
+        <td><%= contact.cellphone %></td>
+          <td><%= contact.user.name unless contact.user.blank? %></td>
+        <td><%= link_to fa_icon("eye"), contact, class: "btn btn-primary" %></td>
+        <td><%= link_to fa_icon("pencil-square-o"), edit_contact_path(contact), class: "btn btn-primary" %></td>
+        <td><%= link_to fa_icon("trash"), contact, class: "btn btn-danger",method: :delete, data: { confirm: t('app.messages.are_you_sure') } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<div>
+  <%= paginate @contacts %>
+</div>

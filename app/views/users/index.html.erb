@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<%= header(t("activerecord.models.user"), new_user_path)%>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= t("activerecord.attributes.user.name") %></th>
+      <th><%= t("activerecord.attributes.user.email") %></th>
+      <th><%= t("activerecord.attributes.user.role_id") %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= handle_field(user.name) %></td>
+        <td><%= user.email %></td>
+        <td><%= handle_field(user.role_id_i18n) %></td>
+        <td class="text-right">
+          <%= link_to t('app.show'), user, class: "btn btn-primary" %>
+          <%= link_to t('app.edit'), edit_user_path(user), class: "btn btn-primary" %>
+          <%= link_to t('app.destroy'), user, class: "btn btn-danger",method: :delete, data: { confirm: t('app.messages.are_you_sure') } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<div>
+  <%= paginate @users %>
+</div>

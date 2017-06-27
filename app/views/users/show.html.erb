@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong><%= t("activerecord.attributes.user.name") %>:</strong>
+  <%= handle_field(@user.name) %>
+</p>
+<p>
+  <strong><%= t("activerecord.attributes.user.email") %>:</strong>
+  <%= handle_field(@user.email) %>
+</p>
+<p>
+  <strong><%= t("activerecord.attributes.user.role_id") %>:</strong>
+  <%= handle_field(@user.role_id_i18n) %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>
+    <% unless @contact.avatar.url.blank? %>
+         <%=image_tag @contact.avatar.url,  class: "image-show" %>
+    <% end %>
+  </strong>
+</p>
+
+
+<p>
+  <strong><%= t("activerecord.attributes.contact.name") %>:</strong>
+  <%= @contact.name %>
+</p>
+
+<p>
+  <strong><%= t("activerecord.attributes.contact.birthdate") %>:</strong>
+  <%= @contact.birthdate %>
+</p>
+
+<p>
+  <strong><%= t("activerecord.attributes.contact.address") %>:</strong>
+  <%= @contact.address %>
+</p>
+
+<p>
+  <strong><%= t("activerecord.attributes.contact.email") %>:</strong>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <strong><%= t("activerecord.attributes.contact.cellphone") %>:</strong>
+  <%= @contact.cellphone %>
+</p>
+
+<p>
+  <strong><%= t("activerecord.attributes.contact.user_id") %>:</strong>
+  <%= @contact.user.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>
