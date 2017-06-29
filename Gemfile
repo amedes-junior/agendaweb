@@ -53,6 +53,8 @@ gem 'rubyzip', '~> 1.1.0'
 gem 'axlsx', '2.1.0.pre'
 gem 'axlsx_rails'
 
+
+
 #gem "pry-debbuger"
 #gem "ruby-debbuger"
 
@@ -71,6 +73,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'rails-controller-testing'
 end
 
 group :development do
